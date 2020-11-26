@@ -18,6 +18,8 @@ flask-cors = "*"
 gunicorn = "*"
 mysqlclient = "*"
 flask-admin = "*"
+qrcode = {extras = ["pil"], version = "*"}
+opencv-python = "*"
 
 [requires]
 python_version = "3.8"

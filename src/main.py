@@ -9,7 +9,12 @@ from flask_cors import CORS
 from utils import APIException, generate_sitemap
 from admin import setup_admin
 from models import db, User
+import qrcode
+from PIL import Image
 #from models import Person
+
+
+
 
 app = Flask(__name__)
 app.url_map.strict_slashes = False
@@ -20,6 +25,19 @@ db.init_app(app)
 CORS(app)
 setup_admin(app)
 
+
+qr = qrcode.make('Jan Escobar')
+qr.save('Jan.png')
+def create_qr():
+    try:
+        qr = qrcode.make('hello world')
+        qr.save('MyQR.png')
+        # return img
+    except:
+        return "Gilipollas"
+
+
+
 # Handle/serialize errors like a JSON object
 @app.errorhandler(APIException)
 def handle_invalid_usage(error):
@@ -29,6 +47,7 @@ def handle_invalid_usage(error):
 @app.route('/')
 def sitemap():
     return generate_sitemap(app)
+
 
 @app.route('/user', methods=['GET'])
 def handle_hello():
