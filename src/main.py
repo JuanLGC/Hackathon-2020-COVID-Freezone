@@ -26,19 +26,10 @@ CORS(app)
 setup_admin(app)
 
 
-qr = qrcode.make('hello world')
-qr.save('MyQR.png')
+qr = qrcode.make('Jan Escobar')
+qr.save('Jan.png')
 def create_qr():
     try:
-        # qr = qrcode.QRCode(
-        #     version=1,
-        #     error_correction=qrcode.constants.ERROR_CORRECT_H,
-        #     box_size=10,
-        #     border=4,
-        # )
-        # qr.add_data('HOLA')
-        # qr.make(fit=True)
-        # img = qr.make_image(fill_color="black", back_color="white").convert('RGB')
         qr = qrcode.make('hello world')
         qr.save('MyQR.png')
         # return img
@@ -57,23 +48,6 @@ def handle_invalid_usage(error):
 def sitemap():
     return generate_sitemap(app)
 
-# @app.route('/qr', methods=['GET'])
-# def create_qr():
-#     try:
-#         # qr = qrcode.QRCode(
-#         #     version=1,
-#         #     error_correction=qrcode.constants.ERROR_CORRECT_H,
-#         #     box_size=10,
-#         #     border=4,
-#         # )
-#         # qr.add_data('HOLA')
-#         # qr.make(fit=True)
-#         # img = qr.make_image(fill_color="black", back_color="white").convert('RGB')
-#         qr = qrcode.make('hello world')
-#         qr.save('MyQR.png')
-#         return img
-#     except:
-#         return "Gilipollas"
 
 @app.route('/user', methods=['GET'])
 def handle_hello():
